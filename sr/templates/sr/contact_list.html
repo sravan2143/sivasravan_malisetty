@@ -1,15 +1,13 @@
-<!-- sr/templates/sr/contact_list.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact List</title>
-</head>
-<body>
+<!-- contact_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Contact List{% endblock %}
+
+{% block content %}
     <h1>Contact List</h1>
     <ul>
         {% for contact in contacts %}
         <li>{{ contact.name }} - {{ contact.email }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

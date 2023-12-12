@@ -1,0 +1,13 @@
+<!-- contact_form.html -->
+{% extends 'sr/base.html' %}
+
+{% block title %}{% if contact.id %}Edit Contact{% else %}Add Contact{% endif %}{% endblock %}
+
+{% block content %}
+    <h1>{% if contact.id %}Edit{% else %}Add{% endif %} Contact</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
