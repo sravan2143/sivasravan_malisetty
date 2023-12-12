@@ -1,13 +1,20 @@
-<!-- contact_list.html -->
-{% extends 'base.html' %}
-
-{% block title %}Contact List{% endblock %}
+{% extends 'sr/base.html' %}
 
 {% block content %}
-    <h1>Contact List</h1>
-    <ul>
-        {% for contact in contacts %}
-        <li>{{ contact.name }} - {{ contact.email }}</li>
-        {% endfor %}
-    </ul>
+  <h1>Contact List</h1>
+  <a href="{% url 'contact_create' %}">Add New Contact</a>
+
+
+  <ul>
+    {% for contact in contacts %}
+    <li>
+      {{ contact.name }} - {{ contact.email }} - {{ contact.phone_number }}
+      <a href="{% url 'contact_edit' contact.pk %}">Edit</a>
+      <a href="{% url 'contact_delete' contact.pk %}">Delete</a>
+    </li>
+    {% empty %}
+    <li>No contacts found.</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
+
