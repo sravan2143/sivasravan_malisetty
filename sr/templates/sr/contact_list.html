@@ -18,7 +18,7 @@
               <tr>
                   <td>{{ contact.name }}</td>
                   <td>{{ contact.email }}</td>
-                  <td>{{ contact.phone }}</td>
+                  <td>{{ contact.phone_number }}</td>
                   <td>
                       <a href="{% url 'contact_edit' contact.pk %}">Edit</a>
                       <a href="{% url 'contact_delete' contact.pk %}">Delete</a>

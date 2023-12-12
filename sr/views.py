@@ -14,13 +14,12 @@ def contact_create(request):
     return render(request, 'sr/contact_form.html', {'form': form})
 
 def contact_list(request):
-    contacts = Contact.objects.all()  # Retrieve all contact objects from the database
+    contacts = Contact.objects.all()
     return render(request, 'sr/contact_list.html', {'contacts': contacts})
 
 def contact_detail(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     return render(request, 'sr/contact_detail.html', {'contact': contact})
-
 
 def contact_edit(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
