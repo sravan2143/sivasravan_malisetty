@@ -1,34 +1,35 @@
 {% extends 'sr/base.html' %}
 
 {% block content %}
-  <h1>Contact List</h1>
-  <a href="{% url 'contact_create' %}">Add New Contact</a>
+  <div class="container mt-4">
+    <h1 class="mb-3">Contact List</h1>
+    <a href="{% url 'contact_create' %}" class="btn btn-primary mb-3">Add New Contact</a>
     {% if contacts %}
-    <table class="table">
-      <thead>
-          <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Actions</th>
-          </tr>
-      </thead>
-      <tbody>
-          {% for contact in contacts %}
-              <tr>
-                  <td>{{ contact.name }}</td>
-                  <td>{{ contact.email }}</td>
-                  <td>{{ contact.phone_number }}</td>
-                  <td>
-                      <a href="{% url 'contact_edit' contact.pk %}">Edit</a>
-                      <a href="{% url 'contact_delete' contact.pk %}">Delete</a>
-                  </td>
-              </tr>
-          {% endfor %}
-      </tbody>
-  </table>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.phone_number }}</td>
+                    <td>
+                        <a href="{% url 'contact_edit' contact.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
-    <p>No contacts found.</p>
+      <p>No contacts found.</p>
     {% endif %}
+  </div>
 {% endblock %}
-
