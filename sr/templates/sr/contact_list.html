@@ -3,18 +3,32 @@
 {% block content %}
   <h1>Contact List</h1>
   <a href="{% url 'contact_create' %}">Add New Contact</a>
-
-
-  <ul>
-    {% for contact in contacts %}
-    <li>
-      {{ contact.name }} - {{ contact.email }} - {{ contact.phone_number }}
-      <a href="{% url 'contact_edit' contact.pk %}">Edit</a>
-      <a href="{% url 'contact_delete' contact.pk %}">Delete</a>
-    </li>
-    {% empty %}
-    <li>No contacts found.</li>
-    {% endfor %}
-  </ul>
+    {% if contacts %}
+    <table class="table">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for contact in contacts %}
+              <tr>
+                  <td>{{ contact.name }}</td>
+                  <td>{{ contact.email }}</td>
+                  <td>{{ contact.phone }}</td>
+                  <td>
+                      <a href="{% url 'contact_edit' contact.pk %}">Edit</a>
+                      <a href="{% url 'contact_delete' contact.pk %}">Delete</a>
+                  </td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+    {% else %}
+    <p>No contacts found.</p>
+    {% endif %}
 {% endblock %}
 
