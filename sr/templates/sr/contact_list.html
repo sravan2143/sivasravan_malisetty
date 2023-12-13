@@ -11,6 +11,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>Created At</th> <!-- New column for creation time -->
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                     <td>{{ contact.name }}</td>
                     <td>{{ contact.email }}</td>
                     <td>{{ contact.phone_number }}</td>
+                    <td>{{ contact.created_at }}</td> <!-- Display creation time -->
                     <td>
                         <a href="{% url 'contact_edit' contact.pk %}" class="btn btn-sm btn-warning">Edit</a>
                         <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-sm btn-danger">Delete</a>

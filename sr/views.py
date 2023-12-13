@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.utils import timezone
 from .models import Contact
 from .forms import ContactForm
 
@@ -6,11 +7,13 @@ def contact_create(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
+            contact = form.save(commit=False)
+            # Set the creation time in Los Angeles time zone
+            contact.created_at = timezone.now()
+            contact.save()
             return redirect('contact_list')
     else:
         form = ContactForm()
-
     return render(request, 'sr/contact_form.html', {'form': form})
 
 def contact_list(request):
